@@ -6,10 +6,9 @@ input_str = input ("please enter a second number: ")
 num2 = int(input_str)
 
 num3 = num1 * num2
-print(str(num1) + " * " + str(num2) + " = " + str(num3))
+print(num1, "*", num2, "=", num3)
 if num2 == 0:
     print ("Division by 0 is not allowed")
 else:
     num3 = num1 / num2
-    print(str(num1) + " / " + str(num2) + " = " + str(num3))
-
+    print(num1, "/", num2, "=", num3)
