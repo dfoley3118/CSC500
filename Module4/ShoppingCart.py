@@ -10,8 +10,7 @@ from itemsToPurchase import ItemToPurchase
 #
 # This program will implement an online shopping cart. The class ItemsToPurchase will be used to hold each item that is purchased.
 #
-# This version the user will be prompted for two items.  After the items have been entered the cost of the two
-# items together will be displayed.
+# User will be propted to enter Item Name, Price and Quantity. After each iteam will be asked if they want to enter more items.
 #
 
 #
@@ -26,6 +25,9 @@ def string_to_boolean(string):
 # Create a list to store items to be purchased
 shopping_cart = []
 
+#
+# Loop until user enters No for continue shoping promot
+#
 continue_shopping = True
 while continue_shopping:
     # Prompting the user for the item to add to shopping cart
@@ -34,7 +36,7 @@ while continue_shopping:
     item_price = float(input("Enter the price of the item: "))
     item_quantity = int(input("Enter the quantity of the item: "))
 
-    # Creating an object of ItemToPurchase class for the first item
+    # Creating an object of ItemToPurchase class for the item
     item = ItemToPurchase(item_name, item_price, item_quantity)
     shopping_cart.append(item)
 
