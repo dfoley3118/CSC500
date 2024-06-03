@@ -35,17 +35,21 @@ course_times = {
     'COM241': '1:00 p.m.'
 }
 
+#
 # Function to display course information
+#
+# Given the course numnber display Room Number, Instructor and Meeting time
+#
 def display_course_info(course_number):
     if course_number in course_rooms:
         room = course_rooms[course_number]
         instructor = course_instructors[course_number]
         time = course_times[course_number]
         
-        print(f"Details for course {course_number}")
+        print(f"\nDetails for course {course_number}")
         print(f"   Room Number: {room}")
         print(f"   Instructor: {instructor}")
-        print(f"   Meeting Time: {time}")
+        print(f"   Meeting Time: {time}\n")
     else:
         print("Course number not found.")
 
