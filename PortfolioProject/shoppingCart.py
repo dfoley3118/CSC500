@@ -35,7 +35,7 @@ class ShoppingCart:
     def remove_item(self, item_name):
         found = False
         for item in self.cart_items:
-            if item.name == item_name:
+            if item.item_name == item_name:
                 self.cart_items.remove(item)
                 found = True
                 break
@@ -45,13 +45,13 @@ class ShoppingCart:
     def modify_item(self, item):
         found = False
         for i in range(len(self.cart_items)):
-            if self.cart_items[i].name == item.name:
-                if item.description != "none":
-                    self.cart_items[i].description = item.description
-                if item.price != 0.0:
-                    self.cart_items[i].price = item.price
-                if item.quantity != 0:
-                    self.cart_items[i].quantity = item.quantity
+            if self.cart_items[i].item_name == item.item_name:
+                if item.item_desc != "none":
+                    self.cart_items[i].item_desc = item.item_desc
+                if item.item_price != 0.0:
+                    self.cart_items[i].item_price = item.item_price
+                if item.item_quantity != 0:
+                    self.cart_items[i].item_quantity = item.item_quantity
                 found = True
                 break
         if not found:
@@ -76,5 +76,14 @@ class ShoppingCart:
             print(f"            Total: ${self.get_cost_of_cart():.2f}")
 
     def print_descriptions(self):
-        # TODO
-        return
+        if not self.cart_items:
+            print("SHOPPING CART IS EMPTY")
+        else:
+            print()
+            title = f"{self.customer_name}'s Shopping Cart - {self.current_date}"
+            print(f"{title:^50}")
+            print(f"{'Item Descriptions':^50}")
+            for item in self.cart_items:
+                item_desc = f"{item.item_name}: {item.item_desc}"
+                print(f"{item_desc:^50}")
+

@@ -1,7 +1,7 @@
 #
 # Class: itemsToPurchase.py
 # Author: Dennis Foley
-# Date: May 25, 2023
+# Date: June 9, 2023
 #
 # Class for Items to Purchase. Each object represent the item to purchased.
 #
@@ -11,10 +11,11 @@
 #     item_quantity: Quantity of the item to purchase
 
 class ItemToPurchase:
-    def __init__(self, item_name="none", item_price=0.0, item_quantity=0):
+    def __init__(self, item_name="none", item_price=0.0, item_quantity=0, item_desc="none"):
         self.item_name = item_name
         self.item_price = item_price
         self.item_quantity = item_quantity
+        self.item_desc = item_desc
 
     def set_item_name(self, item_name):
         self.item_name = item_name
@@ -33,6 +34,12 @@ class ItemToPurchase:
     
     def get_item_quantity(self):
         return self.item_quantity
+
+    def set_item_description(self, item_desc):
+        self.item_desc = item_desc
+    
+    def get_item_description(self):
+        return self.item_desc
 
     def print_item_cost(self):
         total_cost = self.item_price * self.item_quantity

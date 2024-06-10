@@ -6,13 +6,10 @@ from itemsToPurchase import ItemToPurchase
 # Importing the ShoppingCart class from shoppingCart modeul
 from shoppingCart import ShoppingCart
 
-# Import datetime to get current date
-from datetime import datetime
-
 #
 # Program: onlineShoppingCart.py
 # Author: Dennis Foley
-# Date: May 25, 2023
+# Date: June 9, 2023
 #
 # Main program to execute Online Shopping cart. Menu will be printed and each option will be 
 # executed until the user enter q - Quit
@@ -33,25 +30,40 @@ def print_menu(cart):
     return choice
 
 def main():
-    # Get the current date
-    current_date = datetime.now()
+    # Prompt the user for the customer's name
+    customer_name = input("Enter customer's name: ")
 
-    # Convert to string format
-    date_string = current_date.strftime("%B %d, %Y")
+    # Prompt the user for today's date
+    todays_date = input("Enter today's date: ")
 
-    cart = ShoppingCart("Dennis Foley", date_string)
+    # Output the customer's name and today's date
+    print(f"Customer name: {customer_name}")
+    print(f"Today's date: {todays_date}")
+
+    cart = ShoppingCart(customer_name, todays_date)
     choice = ""
     while choice != "q":
         choice = print_menu(cart)
 
         if choice == 'a':
-            item_name = input("\nEnter name of item to purchase: ")
-            item_price = float(input("Enter the price of the item: "))
-            item_quantity = int(input("Enter the quantity of the item: "))
+            item_name = input("\nEnter the item name: ")
+            item_desc = input("Enter the item description: ")
+            item_price = float(input("Enter the item price: "))
+            item_quantity = int(input("Enter the item quantity: "))
 
             # Creating an object of ItemToPurchase class for the item
-            item = ItemToPurchase(item_name, item_price, item_quantity)
+            item = ItemToPurchase(item_name, item_price, item_quantity, item_desc)
             cart.add_item(item)
+        elif choice == 'r':
+            item_name = input("\nEnter name of item to remove: ")
+            cart.remove_item(item_name)
+        elif choice == 'c':
+            item_name = input("\nEnter the item name: ")
+            item_quantity = int(input("Enter the new quantity: "))
+            newItem = ItemToPurchase(item_name, 0.0, item_quantity, "none")
+            cart.modify_item(newItem)
+        elif choice == 'i':
+            cart.print_descriptions()
         elif choice == 'o':
             cart.print_total()
 
